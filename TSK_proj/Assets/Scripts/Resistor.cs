@@ -9,20 +9,20 @@ public class Resistor : MonoBehaviour, IElectricObject
     [SerializeField]
     private double inputVoltage;
     [SerializeField]
-    private double inputAmper;
+    private double inputCurrent;
 
     [SerializeField]
     private double outputVoltage;
     [SerializeField]
-    private double outputAmper;
+    private double outputCurrent;
 
     // interface that contains set voltage method;
     [SerializeField]
     private GameObject nextObject;
 
-    public void SetAmper(double ampers)
+    public void SetCurrent(double current)
     {
-        this.inputAmper = ampers;
+        this.inputCurrent = current;
     }
 
     public void SetVoltage(double voltage)
@@ -49,12 +49,12 @@ public class Resistor : MonoBehaviour, IElectricObject
 
     private void calculateOutputVoltage()
     {
-        this.outputVoltage = inputAmper * resistRate;
+        this.outputVoltage = inputCurrent * resistRate;
     }
 
     private void calculateOutputAmpers()
     {
-        this.outputAmper = inputVoltage / resistRate;
+        this.outputCurrent = inputVoltage / resistRate;
     }
 
 }

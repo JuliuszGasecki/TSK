@@ -9,11 +9,11 @@ public class Source : MonoBehaviour
     [SerializeField]
     private double V;
     [SerializeField]
-    private double A;
+    private double I;
 
     void Start()
     {
         cabel.SetVoltage(V);
-        cabel.SetAmper(A);
+        cabel.SetCurrent(I);
     }
 }

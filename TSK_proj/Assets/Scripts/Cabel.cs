@@ -7,7 +7,7 @@ public class Cabel : MonoBehaviour, IElectricObject
     [SerializeField]
     private double V;
     [SerializeField]
-    private double A;
+    private double I;
 
     // interface that contains set voltage method;
     [SerializeField]
@@ -35,12 +35,12 @@ public class Cabel : MonoBehaviour, IElectricObject
         
     }
 
-    public void SetAmper(double ampers)
+    public void SetCurrent(double ampers)
     {
-        this.A = ampers;
+        this.I = ampers;
         if (nextObject != null && nextObject.GetComponent<IElectricObject>() != null)
         {
-            nextObject.GetComponent<IElectricObject>().SetAmper(A);
+            nextObject.GetComponent<IElectricObject>().SetCurrent(I);
         }
     }
 }
