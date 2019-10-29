@@ -25,11 +25,14 @@ public class InvertingAmplifier : MonoBehaviour
     [SerializeField]
     private double simulationSpeed;
     // Start is called before the first frame update
+    SoundGenerator soundGen;
     void Start()
     {
+        soundGen = GameObject.Find("Audio").GetComponent<SoundGenerator>();
         calculateAlternatingCurrent();
         calculateK();
         calculateUwy();
+        soundGen.setValues(440 + Uwy);
     }
 
     private void calculateK()
@@ -54,5 +57,6 @@ public class InvertingAmplifier : MonoBehaviour
         calculateK();
         calculateUwy();
         Debug.Log(Uwe + " on enter | on exit " + Uwy);
+        soundGen.setValues(440 + Uwy);
     }
 }

@@ -21,10 +21,13 @@ public class SummingAmplifier : MonoBehaviour
     [SerializeField]
     private double simulationSpeed;
     // Start is called before the first frame update
+    SoundGenerator soundGen;
     void Start()
     {
+        soundGen = GameObject.Find("Audio").GetComponent<SoundGenerator>();
         calculateAlternatingCurrent();
         calculateUwy();
+        soundGen.setValues(440 + Uwy);
     }
 
     private void calculateUwy()
@@ -54,5 +57,6 @@ public class SummingAmplifier : MonoBehaviour
     {
         calculateAlternatingCurrent();
         calculateUwy();
+        soundGen.setValues(440 + Uwy);
     }
 }

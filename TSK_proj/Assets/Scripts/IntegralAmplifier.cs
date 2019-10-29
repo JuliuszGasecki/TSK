@@ -24,11 +24,15 @@ public class IntegralAmplifier : MonoBehaviour
     private double capacitor;
     [SerializeField]
     private double simulationSpeed;
+
+    SoundGenerator soundGen;
     // Start is called before the first frame update
     void Start()
     {
+        soundGen = GameObject.Find("Audio").GetComponent<SoundGenerator>();
         calculateAlternatingCurrent();
         calculateUwy();
+        soundGen.setValues(440 + Uwy);
     }
 
 
@@ -48,5 +52,6 @@ public class IntegralAmplifier : MonoBehaviour
         calculateAlternatingCurrent();
         calculateUwy();
         Debug.Log(Uwe + " on enter | on exit " + Uwy);
+        soundGen.setValues(440 + Uwy);
     }
 }
