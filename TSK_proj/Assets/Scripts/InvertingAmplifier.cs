@@ -1,62 +1,63 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class InvertingAmplifier : MonoBehaviour
+namespace Assets.Scripts
 {
-    [SerializeField]
-    private bool directCurrent;
-    [SerializeField]
-    private double frequency;
-    [SerializeField]
-    private double Uo;
-    [SerializeField]
-    private double Uwe;
-    [SerializeField]
-    private double Uwy;
-    [SerializeField]
-    private double R1;
-    [SerializeField]
-    private double R2;
-    [SerializeField]
-    private double R3;
-    [SerializeField]
-    private double K;
-    [SerializeField]
-    private double simulationSpeed;
-    // Start is called before the first frame update
-    SoundGenerator soundGen;
-    void Start()
+    public class InvertingAmplifier : MonoBehaviour
     {
-        soundGen = GameObject.Find("Audio").GetComponent<SoundGenerator>();
-        calculateAlternatingCurrent();
-        calculateK();
-        calculateUwy();
-        soundGen.setValues(440 + Uwy);
-    }
+        [SerializeField]
+        private bool directCurrent;
+        [SerializeField]
+        private double frequency;
+        [SerializeField]
+        private double Uo;
+        [SerializeField]
+        private double Uwe;
+        [SerializeField]
+        private double Uwy;
+        [SerializeField]
+        private double R1;
+        [SerializeField]
+        private double R2;
+        [SerializeField]
+        private double R3;
+        [SerializeField]
+        private double K;
+        [SerializeField]
+        private double simulationSpeed;
+        // Start is called before the first frame update
+        SoundGenerator soundGen;
+        void Start()
+        {
+            soundGen = GameObject.Find("Audio").GetComponent<SoundGenerator>();
+            calculateAlternatingCurrent();
+            calculateK();
+            calculateUwy();
+            soundGen.setValues(440 + Uwy);
+        }
 
-    private void calculateK()
-    {
-        K = -R2 / R1;
-    }
+        private void calculateK()
+        {
+            K = -R2 / R1;
+        }
 
-    private void calculateUwy()
-    {
-        Uwy = -Uwe * R2 / R1;
-    }
+        private void calculateUwy()
+        {
+            Uwy = -Uwe * R2 / R1;
+        }
 
-    private void calculateAlternatingCurrent()
-    {
-        Uwe = Uo * Mathf.Sin((1 / (float)frequency) * Time.time* (float)simulationSpeed);
-    }
+        private void calculateAlternatingCurrent()
+        {
+            Uwe = Uo * Mathf.Sin((1 / (float)frequency) * Time.time* (float)simulationSpeed);
+        }
 
-    // Update is called once per frame
-    void Update()
-    {
-        calculateAlternatingCurrent();
-        calculateK();
-        calculateUwy();
-        Debug.Log(Uwe + " on enter | on exit " + Uwy);
-        soundGen.setValues(440 + Uwy);
+        // Update is called once per frame
+        void Update()
+        {
+            calculateAlternatingCurrent();
+            calculateK();
+            calculateUwy();
+            Debug.Log(Uwe + " on enter | on exit " + Uwy);
+            soundGen.setValues(440 + Uwy);
+        }
     }
 }
