@@ -47,7 +47,7 @@ namespace Assets.Scripts
 
         private void calculateAlternatingCurrent()
         {
-            Uwe = Uo * Mathf.Sin((1 / (float)frequency) * Time.time* (float)simulationSpeed);
+            Uwe = Uo * Mathf.Sin((2 * Mathf.PI / (float)frequency) * Time.time* (float)simulationSpeed);
         }
 
         // Update is called once per frame

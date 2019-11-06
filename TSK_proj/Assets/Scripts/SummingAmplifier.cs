@@ -49,7 +49,7 @@ namespace Assets.Scripts
         private void calculateAlternatingCurrent()
         {
             for(int i = 0; i < Uwes.Count; i++) {
-                Uwes[i] = Uo * Mathf.Sin((1 / (float)frequency) * Time.time * (float)simulationSpeed);
+                Uwes[i] = Uo * Mathf.Sin((2 * Mathf.PI / (float)frequency) * Time.time * (float)simulationSpeed);
             }  
         }
 

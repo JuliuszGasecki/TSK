@@ -261,7 +261,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   soundFrequancy: 440
-  gain: 0.15
+  gain: 0
   volume: 0
 --- !u!1 &519420028
 GameObject:
@@ -375,7 +375,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1581396278}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 95685c647f05eaf4399219bf37b51542, type: 3}
   m_Name: 
@@ -460,7 +460,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1581396278}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7da4f107e3e12d54b90894a91663c581, type: 3}
   m_Name: 
@@ -481,7 +481,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1581396278}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 706340eaad591b54db425e7d6a94e5b4, type: 3}
   m_Name: 
@@ -507,7 +507,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1581396278}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f9351b3b036849c49b4adbc322122ded, type: 3}
   m_Name: 
@@ -518,7 +518,7 @@ MonoBehaviour:
   Uwe: 0
   Uwy: 0
   R1: 1000
-  R2: 0
+  R2: 1000
   K: 0
   capacitor: 0.0000058
   simulationSpeed: 10
@@ -535,10 +535,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   directCurrent: 0
-  frequency: 50
-  Uwe: 0.0001
+  frequency: 40
+  Uo: 5
+  Uwe: 0
   Uwy: 0
-  R2: 4
-  K: 0
-  Capacitor: 0.0000058
-  simulationSpeed: 10
+  R2: 5
+  Capacitor: 0.000001
+  simulationSpeed: 1
