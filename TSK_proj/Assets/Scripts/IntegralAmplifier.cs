@@ -38,7 +38,8 @@ namespace Assets.Scripts
 
         private void calculateUwy()
         {
-            Uwy = -Uwe / (2 * Mathf.PI * frequency * R1 * capacitor);
+            //Uwy = -Uwe / (2 * Mathf.PI * frequency * R1 * capacitor);
+            Uwy = -Uwe / (2 * Mathf.PI * frequency * R1 * capacitor) * Mathf.Sin(2 * Mathf.PI * Time.time * (float)simulationSpeed + Mathf.PI/2);
         }
 
         private void calculateAlternatingCurrent()

@@ -37,7 +37,8 @@ namespace Assets.Scripts
         private void calculateUwy()
         {
             time = Time.time - time;
-            Uwy = -R2 * Capacitor * getDifferentialUwe();
+            //Uwy = -R2 * Capacitor * getDifferentialUwe();
+            Uwy = 2 * Mathf.PI * frequency * R2 * Capacitor * Uwe * Mathf.Sin((float)(2 * Mathf.PI * frequency * Time.time * simulationSpeed - Mathf.PI / 2));
         }
 
         private double getDifferentialUwe()
