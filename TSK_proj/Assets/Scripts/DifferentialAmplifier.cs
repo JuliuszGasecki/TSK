@@ -47,6 +47,36 @@ namespace Assets.Scripts
             return (float)Uo;
         }
 
+        public float GetR1()
+        {
+            return 0;
+        }
+
+        public void SetR1(float R1)
+        {
+            
+        }
+
+        public float GetR2()
+        {
+            return (float)R2;
+        }
+
+        public void SetR2(float R2)
+        {
+            this.R2 = R2;
+        }
+
+        public float GetC()
+        {
+            return (float)Capacitor;
+        }
+
+        public void SetC(float C)
+        {
+            this.Capacitor = C;
+        }
+
         SoundGenerator soundGen;
         // Start is called before the first frame update
         void Start()

@@ -47,6 +47,39 @@ namespace Assets.Scripts
         {
             return (float)Uwy;
         }
+
+        public float GetR1()
+        {
+            return (float)resistors[0];
+        }
+
+        public void SetR1(float R1)
+        {
+           for(int i = 0; i < resistors.Count; i++)
+            {
+                resistors[i] = R1;
+            }
+        }
+
+        public float GetR2()
+        {
+            return -1;
+        }
+
+        public void SetR2(float R2)
+        {
+            
+        }
+
+        public float GetC()
+        {
+            return -1;
+        }
+
+        public void SetC(float C)
+        {
+
+        }
         void Start()
         {
             soundGen = GameObject.Find("Audio").GetComponent<SoundGenerator>();

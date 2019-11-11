@@ -14,6 +14,10 @@ public class ViewController : MonoBehaviour
     public Text Uwe;
     public Text Uwy;
 
+    public Text R1;
+    public Text R2;
+    public Text C;
+
     public List<Sprite> sprites;
 
     Queue<GameObject> inputPoints;
@@ -134,30 +138,47 @@ public class ViewController : MonoBehaviour
             this.Uwo.text = simulator.GetComponent<InvertingAmplifier>().GetUwo().ToString();
             this.Uwe.text = simulator.GetComponent<InvertingAmplifier>().GetUwe().ToString();
             this.Uwy.text = simulator.GetComponent<InvertingAmplifier>().GetUwy().ToString();
+            this.R1.text = simulator.GetComponent<InvertingAmplifier>().GetR1().ToString();
+            this.R2.text = simulator.GetComponent<InvertingAmplifier>().GetR2().ToString();
+            this.C.text = "null";
         }
         else if (simulator.GetComponent<NonInvertingAmplifier>().enabled)
         {
             this.Uwo.text = simulator.GetComponent<NonInvertingAmplifier>().GetUwo().ToString();
             this.Uwe.text = simulator.GetComponent<NonInvertingAmplifier>().GetUwe().ToString();
             this.Uwy.text = simulator.GetComponent<NonInvertingAmplifier>().GetUwy().ToString();
+            this.Uwy.text = simulator.GetComponent<NonInvertingAmplifier>().GetUwy().ToString();
+            this.R1.text = simulator.GetComponent<NonInvertingAmplifier>().GetR1().ToString();
+            this.R2.text = simulator.GetComponent<NonInvertingAmplifier>().GetR2().ToString();
+            this.C.text = "null";
         }
         else if (simulator.GetComponent<SummingAmplifier>().enabled)
         {
             this.Uwo.text = simulator.GetComponent<SummingAmplifier>().GetUwo().ToString();
             this.Uwe.text = simulator.GetComponent<SummingAmplifier>().GetUwe().ToString();
             this.Uwy.text = simulator.GetComponent<SummingAmplifier>().GetUwy().ToString();
+            this.R1.text = simulator.GetComponent<SummingAmplifier>().GetR1().ToString();
+            this.R2.text = "null";
+            this.C.text = "null";
         }
         else if (simulator.GetComponent<IntegralAmplifier>().enabled)
         {
             this.Uwo.text = simulator.GetComponent<IntegralAmplifier>().GetUwo().ToString();
             this.Uwe.text = simulator.GetComponent<IntegralAmplifier>().GetUwe().ToString();
             this.Uwy.text = simulator.GetComponent<IntegralAmplifier>().GetUwy().ToString();
+            this.Uwy.text = simulator.GetComponent<IntegralAmplifier>().GetUwy().ToString();
+            this.R1.text = simulator.GetComponent<IntegralAmplifier>().GetR1().ToString();
+            this.R2.text = "null";
+            this.C.text = simulator.GetComponent<IntegralAmplifier>().GetC().ToString();
         }
         else if (simulator.GetComponent<DifferentialAmplifier>().enabled)
         {
             this.Uwo.text = simulator.GetComponent<DifferentialAmplifier>().GetUwo().ToString();
             this.Uwe.text = simulator.GetComponent<DifferentialAmplifier>().GetUwe().ToString();
             this.Uwy.text = simulator.GetComponent<DifferentialAmplifier>().GetUwy().ToString();
+            this.R1.text = "null";
+            this.R2.text = simulator.GetComponent<DifferentialAmplifier>().GetR2().ToString();
+            this.C.text = simulator.GetComponent<DifferentialAmplifier>().GetC().ToString();
         }
     }
 
@@ -168,7 +189,7 @@ public class ViewController : MonoBehaviour
     
     private void PrepareGraph()
     {
-        if(inputPoints.Count > 1000)
+        if(inputPoints.Count >= 1000)
         {
             inputPoints.Dequeue();
             outputPoints.Dequeue();
@@ -212,6 +233,76 @@ public class ViewController : MonoBehaviour
         r.anchoredPosition = new Vector2(t + (float)0.7, val * 2);
         r.sizeDelta = new Vector2(3, 3);
         return gm;
+    }
+
+    public void SetR1(float val)
+    {
+        if (simulator.GetComponent<InvertingAmplifier>().enabled)
+        {
+            simulator.GetComponent<InvertingAmplifier>().SetR1(val);
+        }
+        if (simulator.GetComponent<NonInvertingAmplifier>().enabled)
+        {
+            simulator.GetComponent<NonInvertingAmplifier>().SetR1(val);
+        }
+        if (simulator.GetComponent<SummingAmplifier>().enabled)
+        {
+            simulator.GetComponent<SummingAmplifier>().SetR1(val);
+        }
+        if (simulator.GetComponent<IntegralAmplifier>().enabled)
+        {
+            simulator.GetComponent<IntegralAmplifier>().SetR1(val);
+        }
+        if (simulator.GetComponent<DifferentialAmplifier>().enabled)
+        {
+            simulator.GetComponent<DifferentialAmplifier>().SetR1(val);
+        }
+    }
+    public void SetR2(float val)
+    {
+        if (simulator.GetComponent<InvertingAmplifier>().enabled)
+        {
+            simulator.GetComponent<InvertingAmplifier>().SetR2(val);
+        }
+        if (simulator.GetComponent<NonInvertingAmplifier>().enabled)
+        {
+            simulator.GetComponent<NonInvertingAmplifier>().SetR2(val);
+        }
+        if (simulator.GetComponent<SummingAmplifier>().enabled)
+        {
+            simulator.GetComponent<SummingAmplifier>().SetR2(val);
+        }
+        if (simulator.GetComponent<IntegralAmplifier>().enabled)
+        {
+            simulator.GetComponent<IntegralAmplifier>().SetR2(val);
+        }
+        if (simulator.GetComponent<DifferentialAmplifier>().enabled)
+        {
+            simulator.GetComponent<DifferentialAmplifier>().SetR2(val);
+        }
+    }
+    public void SetC(float val)
+    {
+        if (simulator.GetComponent<InvertingAmplifier>().enabled)
+        {
+            simulator.GetComponent<InvertingAmplifier>().SetC(val);
+        }
+        if (simulator.GetComponent<NonInvertingAmplifier>().enabled)
+        {
+            simulator.GetComponent<NonInvertingAmplifier>().SetC(val);
+        }
+        if (simulator.GetComponent<SummingAmplifier>().enabled)
+        {
+            simulator.GetComponent<SummingAmplifier>().SetC(val);
+        }
+        if (simulator.GetComponent<IntegralAmplifier>().enabled)
+        {
+            simulator.GetComponent<IntegralAmplifier>().SetC(val);
+        }
+        if (simulator.GetComponent<DifferentialAmplifier>().enabled)
+        {
+            simulator.GetComponent<DifferentialAmplifier>().SetC(val);
+        }
     }
 
     void Update()

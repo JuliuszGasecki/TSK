@@ -77,6 +77,36 @@ namespace Assets.Scripts
             Uwe = Uo * Mathf.Sin((float)(2 * Mathf.PI * (float)frequency * Time.time * simulationSpeed));
         }
 
+        public float GetR1()
+        {
+            return (float)R1;
+        }
+
+        public void SetR1(float R1)
+        {
+            this.R1 = R1;
+        }
+
+        public float GetR2()
+        {
+            return (float)R2;
+        }
+
+        public void SetR2(float R2)
+        {
+            this.R2 = R2;
+        }
+
+        public float GetC()
+        {
+            return -1;
+        }
+
+        public void SetC(float C)
+        {
+
+        }
+
         // Update is called once per frame
         void Update()
         {
