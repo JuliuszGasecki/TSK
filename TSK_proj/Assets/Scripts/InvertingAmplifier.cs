@@ -24,6 +24,33 @@ namespace Assets.Scripts
         private double K;
         [SerializeField]
         private double simulationSpeed;
+
+        public void SetSimulationSpeed(float val)
+        {
+            simulationSpeed = val;
+        }
+
+        public void SetUwo(float val)
+        {
+            Uo = val;
+        }
+
+        public float GetUwo()
+        {
+            return (float)Uo;
+        }
+
+        public float GetUwe()
+        {
+            return (float)Uwe;
+        }
+
+        public float GetUwy()
+        {
+            return (float)Uwy;
+        }
+
+
         // Start is called before the first frame update
         SoundGenerator soundGen;
         void Start()
@@ -47,7 +74,7 @@ namespace Assets.Scripts
 
         private void calculateAlternatingCurrent()
         {
-            Uwe = Uo * Mathf.Sin((2 * Mathf.PI / (float)frequency) * Time.time* (float)simulationSpeed);
+            Uwe = Uo * Mathf.Sin((float)(2 * Mathf.PI * (float)frequency * Time.time * simulationSpeed));
         }
 
         // Update is called once per frame
@@ -56,7 +83,7 @@ namespace Assets.Scripts
             calculateAlternatingCurrent();
             calculateK();
             calculateUwy();
-            Debug.Log(Uwe + " on enter | on exit " + Uwy);
+           // Debug.Log(Uwe + " on enter | on exit " + Uwy);
             soundGen.setValues(440 + Uwy);
         }
     }

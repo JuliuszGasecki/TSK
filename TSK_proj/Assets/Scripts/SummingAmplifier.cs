@@ -23,6 +23,30 @@ namespace Assets.Scripts
         private double simulationSpeed;
         // Start is called before the first frame update
         SoundGenerator soundGen;
+
+        public void SetSimulationSpeed(float val)
+        {
+            simulationSpeed = val;
+        }
+
+        public void SetUwo(float val)
+        {
+            Uo = val;
+        }
+
+        public float GetUwo()
+        {
+            return (float)Uo;
+        }
+        public float GetUwe()
+        {
+            return (float)Uwes[0];
+        }
+
+        public float GetUwy()
+        {
+            return (float)Uwy;
+        }
         void Start()
         {
             soundGen = GameObject.Find("Audio").GetComponent<SoundGenerator>();
@@ -49,7 +73,7 @@ namespace Assets.Scripts
         private void calculateAlternatingCurrent()
         {
             for(int i = 0; i < Uwes.Count; i++) {
-                Uwes[i] = Uo * Mathf.Sin((2 * Mathf.PI / (float)frequency) * Time.time * (float)simulationSpeed);
+                Uwes[i] = Uo * Mathf.Sin((float)(2 * Mathf.PI * (float)frequency * Time.time * simulationSpeed));
             }  
         }
 

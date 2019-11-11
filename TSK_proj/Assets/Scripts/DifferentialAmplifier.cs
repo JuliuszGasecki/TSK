@@ -22,6 +22,31 @@ namespace Assets.Scripts
         private double simulationSpeed;
         private float time;
 
+        public void SetSimulationSpeed(float val)
+        {
+            simulationSpeed = val;
+        }
+
+        public void SetUwo(float val)
+        {
+            Uo = val;
+        }
+
+        public float GetUwe()
+        {
+            return (float)Uwe;
+        }
+
+        public float GetUwy()
+        {
+            return (float)Uwy;
+        }
+
+        public float GetUwo()
+        {
+            return (float)Uo;
+        }
+
         SoundGenerator soundGen;
         // Start is called before the first frame update
         void Start()
@@ -56,7 +81,7 @@ namespace Assets.Scripts
         {
             calculateAlternatingCurrent();
             calculateUwy();
-            Debug.Log(Uwe + " on enter | on exit " + Uwy);
+           // Debug.Log(Uwe + " on enter | on exit " + Uwy);
             soundGen.setValues(440 + Uwy);
         }
     }
