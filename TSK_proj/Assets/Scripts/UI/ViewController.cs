@@ -5,6 +5,8 @@ using UnityEngine;
 using UnityEngine.UI;
 public class ViewController : MonoBehaviour
 {
+    float t = -350;
+
     GameObject simulator;
     GameObject ampImg;
 
@@ -14,11 +16,21 @@ public class ViewController : MonoBehaviour
 
     public List<Sprite> sprites;
 
+    Queue<GameObject> inputPoints;
+    Queue<GameObject> outputPoints;
+
+    GameObject graph;
+    public Sprite inputSprite;
+    public Sprite outputSprite;
+
     // Start is called before the first frame update
     void Start()
     {
+        inputPoints = new Queue<GameObject>();
+        outputPoints = new Queue<GameObject>();
         simulator = GameObject.Find("Simulator");
         ampImg = GameObject.Find("AmpImage");
+        graph = GameObject.Find("Graph");
         SetAmp(0);
     }
 
@@ -148,9 +160,68 @@ public class ViewController : MonoBehaviour
             this.Uwy.text = simulator.GetComponent<DifferentialAmplifier>().GetUwy().ToString();
         }
     }
-    // Update is called once per frame
+
+    private void showGrapth()
+    {
+        
+    }
+    
+    private void PrepareGraph()
+    {
+        if(inputPoints.Count > 1000)
+        {
+            inputPoints.Dequeue();
+            outputPoints.Dequeue();
+            foreach(GameObject g in inputPoints)
+            {
+                g.GetComponent<RectTransform>().anchoredPosition =
+                    new Vector2(
+                        g.GetComponent<RectTransform>().anchoredPosition.x- (float)0.7,
+                        g.GetComponent<RectTransform>().anchoredPosition.y );
+            }
+            foreach (GameObject g in outputPoints)
+            {
+                g.GetComponent<RectTransform>().anchoredPosition =
+                    new Vector2(
+                        g.GetComponent<RectTransform>().anchoredPosition.x- (float)0.7,
+                        g.GetComponent<RectTransform>().anchoredPosition.y);
+            }
+        }
+        inputPoints.Enqueue(preparePoint(true, Time.time, float.Parse(this.Uwe.text)));
+        outputPoints.Enqueue(preparePoint(false, Time.time, float.Parse(this.Uwy.text)));
+    }
+
+    private GameObject preparePoint(bool isInput, float time, float val)
+    {
+        GameObject gm
+;        if (isInput)
+        {
+            gm = new GameObject("inp", typeof(Image));
+            gm.GetComponent<Image>().sprite = inputSprite;
+        }
+        else
+        {
+            gm = new GameObject("out", typeof(Image));
+            gm.GetComponent<Image>().sprite = outputSprite;
+        }
+        gm.AddComponent<OscPoint>();
+        gm.GetComponent<OscPoint>().value = val;
+        gm.GetComponent<OscPoint>().time = t + (float)0.7;
+        gm.transform.SetParent(graph.GetComponent<RectTransform>(), false);
+        RectTransform r = gm.GetComponent<RectTransform>();
+        r.anchoredPosition = new Vector2(t + (float)0.7, val * 2);
+        r.sizeDelta = new Vector2(3, 3);
+        return gm;
+    }
+
     void Update()
     {
+        t += (float)0.7;
+        if(t >= 350)
+        {
+            t -= (float)0.7;
+        }
         SetText();
+        PrepareGraph();
     }
 }
