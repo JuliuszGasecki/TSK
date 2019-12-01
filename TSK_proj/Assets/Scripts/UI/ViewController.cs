@@ -158,7 +158,7 @@ public class ViewController : MonoBehaviour
             this.Uwe.text = simulator.GetComponent<SummingAmplifier>().GetUwe().ToString();
             this.Uwy.text = simulator.GetComponent<SummingAmplifier>().GetUwy().ToString();
             this.R1.text = simulator.GetComponent<SummingAmplifier>().GetR1().ToString();
-            this.R2.text = "null";
+            this.R2.text = simulator.GetComponent<SummingAmplifier>().GetR2().ToString();
             this.C.text = "null";
         }
         else if (simulator.GetComponent<IntegralAmplifier>().enabled)
@@ -168,7 +168,7 @@ public class ViewController : MonoBehaviour
             this.Uwy.text = simulator.GetComponent<IntegralAmplifier>().GetUwy().ToString();
             this.Uwy.text = simulator.GetComponent<IntegralAmplifier>().GetUwy().ToString();
             this.R1.text = simulator.GetComponent<IntegralAmplifier>().GetR1().ToString();
-            this.R2.text = "null";
+            this.R2.text = simulator.GetComponent<IntegralAmplifier>().GetR2().ToString();
             this.C.text = simulator.GetComponent<IntegralAmplifier>().GetC().ToString();
         }
         else if (simulator.GetComponent<DifferentialAmplifier>().enabled)
@@ -191,8 +191,10 @@ public class ViewController : MonoBehaviour
     {
         if(inputPoints.Count >= 1000)
         {
-            inputPoints.Dequeue();
-            outputPoints.Dequeue();
+            var a = inputPoints.Dequeue();
+            var b = outputPoints.Dequeue();
+            GameObject.Destroy(a);
+            GameObject.Destroy(b);
             foreach(GameObject g in inputPoints)
             {
                 g.GetComponent<RectTransform>().anchoredPosition =
@@ -281,19 +283,19 @@ public class ViewController : MonoBehaviour
             simulator.GetComponent<DifferentialAmplifier>().SetR2(val);
         }
     }
-    public void SetC(float val)
+    public void SetC(double val)
     {
         if (simulator.GetComponent<InvertingAmplifier>().enabled)
         {
-            simulator.GetComponent<InvertingAmplifier>().SetC(val);
+            //simulator.GetComponent<InvertingAmplifier>().SetC(val);
         }
         if (simulator.GetComponent<NonInvertingAmplifier>().enabled)
         {
-            simulator.GetComponent<NonInvertingAmplifier>().SetC(val);
+            //simulator.GetComponent<NonInvertingAmplifier>().SetC(val);
         }
         if (simulator.GetComponent<SummingAmplifier>().enabled)
         {
-            simulator.GetComponent<SummingAmplifier>().SetC(val);
+            //simulator.GetComponent<SummingAmplifier>().SetC(val);
         }
         if (simulator.GetComponent<IntegralAmplifier>().enabled)
         {
@@ -314,5 +316,6 @@ public class ViewController : MonoBehaviour
         }
         SetText();
         PrepareGraph();
+        Debug.Log(inputPoints.Count);
     }
 }

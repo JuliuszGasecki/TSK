@@ -75,7 +75,7 @@ namespace Assets.Scripts
             return (float)capacitor;
         }
 
-        public void SetC(float C)
+        public void SetC(double C)
         {
             this.capacitor = C;
         }
@@ -94,7 +94,8 @@ namespace Assets.Scripts
         private void calculateUwy()
         {
             //Uwy = -Uwe / (2 * Mathf.PI * frequency * R1 * capacitor);
-            Uwy = -Uwe / (2 * Mathf.PI * frequency * R1 * capacitor) * Mathf.Sin(2 * Mathf.PI * Time.time * (float)simulationSpeed + Mathf.PI/2);
+           // Uwy = -Uwe / (2 * Mathf.PI * frequency * R1 * capacitor) * Mathf.Sin(2 * Mathf.PI * Time.time * (float)simulationSpeed - Mathf.PI/2);
+            Uwy = 2 * Mathf.PI * frequency * R1 * capacitor * Uo * Mathf.Sin(2 * Mathf.PI * (float)frequency *Time.time * (float)simulationSpeed - Mathf.PI/2);
         }
 
         private void calculateAlternatingCurrent()

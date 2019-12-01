@@ -63,12 +63,12 @@ namespace Assets.Scripts
 
         public float GetR2()
         {
-            return -1;
+            return (float)Rf;
         }
 
         public void SetR2(float R2)
         {
-            
+            Rf = R2;
         }
 
         public float GetC()
