@@ -94,7 +94,7 @@ namespace Assets.Scripts
             time = Time.time - time;
             //Uwy = -R2 * Capacitor * getDifferentialUwe();
             //Uwy = 2 * Mathf.PI * frequency * R2 * Capacitor * Uwe * Mathf.Sin((float)(2 * Mathf.PI * frequency * Time.time * simulationSpeed + Mathf.PI / 2));
-            Uwy = Uo / (2 * Mathf.PI * frequency * R2 * Capacitor) * Mathf.Sin(2 * Mathf.PI * (float)frequency * Time.time * (float)simulationSpeed + Mathf.PI / 2);
+            Uwy = Uo / (2 * Mathf.PI * frequency * R2 * Capacitor ) * Mathf.Sin(2 * Mathf.PI * (float)frequency * Time.time * (float)simulationSpeed + Mathf.PI / 2);
         }
 
         private double getDifferentialUwe()

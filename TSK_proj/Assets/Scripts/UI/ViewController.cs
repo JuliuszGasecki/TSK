@@ -169,7 +169,7 @@ public class ViewController : MonoBehaviour
             this.Uwy.text = simulator.GetComponent<IntegralAmplifier>().GetUwy().ToString();
             this.R1.text = simulator.GetComponent<IntegralAmplifier>().GetR1().ToString();
             this.R2.text = simulator.GetComponent<IntegralAmplifier>().GetR2().ToString();
-            this.C.text = simulator.GetComponent<IntegralAmplifier>().GetC().ToString();
+            this.C.text = simulator.GetComponent<IntegralAmplifier>().GetC().ToString() + "micro F";
         }
         else if (simulator.GetComponent<DifferentialAmplifier>().enabled)
         {
@@ -178,7 +178,7 @@ public class ViewController : MonoBehaviour
             this.Uwy.text = simulator.GetComponent<DifferentialAmplifier>().GetUwy().ToString();
             this.R1.text = "null";
             this.R2.text = simulator.GetComponent<DifferentialAmplifier>().GetR2().ToString();
-            this.C.text = simulator.GetComponent<DifferentialAmplifier>().GetC().ToString();
+            this.C.text = simulator.GetComponent<DifferentialAmplifier>().GetC().ToString() + "micro F";
         }
     }
 
